@@ -9,6 +9,7 @@ import (
 	"os"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"whaletracker-backend/internal/ingestor"
@@ -102,7 +103,8 @@ func main() {
 	// GET /api/stats/{asset} - Dynamically computes rolling 24h volume metrics from memory buckets
 	// GET /api/stats/{asset} - Dynamically computes rolling 24h volume metrics safely
 	r.Get("/api/stats/{asset}", func(w http.ResponseWriter, r *http.Request) {
-		asset := chi.URLParam(r, "asset")
+		rawAsset := chi.URLParam(r, "asset")
+		asset := strings.ToUpper(rawAsset)
 
 		// 1. Get last traded execution price snapshot baseline
 		hashKey := "stats:asset:" + asset
