@@ -30,7 +30,7 @@ func NewStreamIngestor(rdb *redis.Client) *StreamIngestor {
 
 func (si *StreamIngestor) StartConnect(ctx context.Context) {
 	// Binance market data endpoint, defaults to standard secure port 443
-	url := "wss://data-stream.binance.vision/ws/ethusdt@aggTrade"
+	url := "wss://data-stream.binance.vision/ws/btcusdt@aggTrade"
 
 	log.Printf("Connecting to Official Binance Market Data: %s", url)
 
