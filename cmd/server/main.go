@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
 	"context"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"sort"
 	"strconv"
 	"time"
@@ -186,9 +186,9 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	
+
 	fmt.Printf("Backend API running on %s\n", port)
-	if err := http.ListenAndServe(port, r); err != nil {
+	if err := http.ListenAndServe(":"+port, r); err != nil {
 		log.Fatalf("Server failed to start: %v", err)
 	}
 }
